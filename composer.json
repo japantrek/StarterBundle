@@ -1,0 +1,16 @@
+{
+	"name" : "nvbooster/starter-bundle",
+	"type" : "symfony-bundle",
+	"description" : "starter-bundle",
+	"keywords" : ["Symfony CMF","starter"]	
+	"homepage" : "https://github.com/nvbooster/StarterBundle",
+	"license" : "MIT",	
+	"authors" : [
+        {
+			"name" : "Vyacheslav Nechipurenko",
+			"email" : "nvb@aproxima.ru",
+			"homepage" : "https://github.com/nvbooster"
+		}
+	],
+	"minimum-stability" : "dev",
+}
