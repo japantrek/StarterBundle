@@ -2,7 +2,7 @@
 	"name" : "nvbooster/starter-bundle",
 	"type" : "symfony-bundle",
 	"description" : "starter-bundle",
-	"keywords" : ["Symfony CMF","starter"]	
+	"keywords" : ["Symfony CMF","starter"],
 	"homepage" : "https://github.com/nvbooster/StarterBundle",
 	"license" : "MIT",	
 	"authors" : [
@@ -12,5 +12,5 @@
 			"homepage" : "https://github.com/nvbooster"
 		}
 	],
-	"minimum-stability" : "dev",
+	"minimum-stability" : "dev"
 }
