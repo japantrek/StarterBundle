@@ -1,0 +1,9 @@
+<type
+        xmlns:schema="http://schema.org/"
+        typeof="schema:WebPage"
+        >
+    <children>
+        <property property="schema:headline" identifier="title" tag-name="h3"/>
+        <property property="schema:text" identifier="text" />
+    </children>
+</type>

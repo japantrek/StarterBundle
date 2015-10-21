@@ -1,0 +1,19 @@
+<doctrine-mapping
+    xmlns="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/phpcr-odm/phpcr-mapping
+    https://github.com/doctrine/phpcr-odm/raw/master/doctrine-phpcr-odm-mapping.xsd"
+    >
+
+    <document
+        name="nvbooster\StarterBundle\Document\UnitBlock"
+        referenceable="true"
+        >
+        <field name="title" type="string" nullable="true"/>
+        <field name="text" type="string"/>
+        <field name="url" type="string" nullable="true"/>
+        <field name="route" type="string" nullable="true"/>
+        <field name="image" type="string" nullable="true"/>
+    </document>
+
+</doctrine-mapping>

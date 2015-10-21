@@ -4,13 +4,104 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
+    <parameters>
+        <parameter key="nvbooster_starter.persistence.phpcr.opcontent_class">nvbooster\StarterBundle\Document\OnePageContent</parameter>
+        <parameter key="nvbooster_starter.persistence.phpcr.opcontent_section_class">nvbooster\StarterBundle\Document\OnePageSection</parameter>
+        <parameter key="nvbooster_starter.persistence.phpcr.unit_block_class">nvbooster\StarterBundle\Document\UnitBlock</parameter>
+        
+        <parameter key="nvbooster_starter.template.external_link">NvboosterStarterBundle::externallink.html.twig</parameter>
+        
+        <parameter key="nvbooster_starter.opcontent_admin.class">nvbooster\StarterBundle\Admin\OnePageContentAdmin</parameter>
+        <parameter key="nvbooster_starter.opcontentsection_admin.class">nvbooster\StarterBundle\Admin\OnePageSectionAdmin</parameter>
+	    <parameter key="nvbooster_starter.unitblock_admin.class">nvbooster\StarterBundle\Admin\UnitBlockAdmin</parameter>
+	    <parameter key="nvbooster_starter.rssblock_admin.class">nvbooster\StarterBundle\Admin\RSSBlockAdmin</parameter>
+	    
+	    <parameter key="nvbooster_starter.persistence.phpcr.opcontent_basepath">/cms/onepagecontent</parameter>	    
+	    
+	    <parameter key="nvbooster_starter.block.unit.service.class">nvbooster\StarterBundle\Block\UnitBlockService</parameter>
+	    
+	    <parameter key="nvbooster_starter.admin_extension.sidemenu.class">nvbooster\StarterBundle\Admin\Extension\SideMenuAdminExtension</parameter>
+	    <parameter key="nvbooster_starter.admin_extension.settings.class">nvbooster\StarterBundle\Admin\Extension\BlockSettingsAdminExtension</parameter>
+	    
+	    <parameter key="nvbooster_starter.externalcontent_twigextension.class">nvbooster\StarterBundle\Twig\ExternalContentTwigExtension</parameter>
+	    <parameter key="nvbooster_starter.blockattributes_twigextension.class">nvbooster\StarterBundle\Twig\BlockAttributesTwigExtension</parameter>
+	    
+	    <parameter key="cmf_menu.persistence.phpcr.menu_basepath">/cms</parameter>
+    </parameters>
+    
     <services>
-        <service id="nvbooster_starter.example" class="nvbooster\StarterBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
-        </service>
+		<service id="nvbooster_starter.phpcr.initializer" class="Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer">
+			<argument>nvbooster_starter initializer</argument>
+			<argument type="collection">
+                <argument>%nvbooster_starter.persistence.phpcr.opcontent_basepath%</argument>
+			</argument>
+			<tag name="doctrine_phpcr.initializer" />
+		</service>
+		<service id="nvbooster_starter.opcontent_admin" class="%nvbooster_starter.opcontent_admin.class%">
+			<argument></argument>
+			<argument>%nvbooster_starter.persistence.phpcr.opcontent_class%</argument>
+			<argument>SonataAdminBundle:CRUD</argument>
+			<tag name="sonata.admin" manager_type="doctrine_phpcr" group="nvbooster_starter" label="One Page Content Section" />
+			<call method="setRouteBuilder">
+			    <argument type="service" id="sonata.admin.route.path_info_slashes" />
+			</call>
+			<call method="setRootPath">
+			    <argument>%nvbooster_starter.persistence.phpcr.opcontent_basepath%</argument>
+			</call>
+		</service>
+		<service id="nvbooster_starter.opcontentsection_admin" class="%nvbooster_starter.opcontentsection_admin.class%">
+			<argument></argument>
+			<argument>%nvbooster_starter.persistence.phpcr.opcontent_section_class%</argument>
+			<argument>SonataAdminBundle:CRUD</argument>
+			<tag name="sonata.admin" manager_type="doctrine_phpcr" group="nvbooster_starter" label="One Page Content Section" />
+			<call method="setRootPath">
+			    <argument>%nvbooster_starter.persistence.phpcr.opcontent_basepath%</argument>
+			</call>
+			<call method="setBlocksRoot">
+			    <argument>%cmf_content.persistence.phpcr.content_basepath%</argument>
+			</call>
+		</service>
+		<service id="nvbooster_starter.block.unit" class="%nvbooster_starter.block.unit.service.class%">
+			<argument>nvbooster_starter.block.unit</argument>
+			<argument type="service" id="templating" />
+			<tag name="sonata.block" />
+		</service>
+		<service id="nvbooster_starter.unitblock_admin" class="%nvbooster_starter.unitblock_admin.class%">
+			<argument></argument>
+			<argument>%nvbooster_starter.persistence.phpcr.unit_block_class%</argument>
+			<argument>SonataAdminBundle:CRUD</argument>
+			<tag name="sonata.admin" manager_type="doctrine_phpcr" group="nvbooster_starter" label="Unit Block" />
+			<call method="setRootPath">
+			    <argument>%cmf_content.persistence.phpcr.content_basepath%</argument>
+			</call>
+			<call method="setRouteBuilder">
+			    <argument type="service" id="sonata.admin.route.path_info_slashes" />
+			</call>
+		</service>
+		<service id="nvbooster_starter.admin_extension.sidemenu" class="%nvbooster_starter.admin_extension.sidemenu.class%">
+		    <tag name="sonata.admin.extension" target="cmf_content.admin"/>
+		</service>
+		<service id="nvbooster_starter.admin_extension.settings" class="%nvbooster_starter.admin_extension.settings.class%">
+		    <tag name="sonata.admin.extension" />
+		</service>
+		<service id="nvbooster_starter.rssblock_admin" class="%nvbooster_starter.rssblock_admin.class%">
+			<argument></argument>
+			<argument>Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\RssBlock</argument>
+			<argument>SonataAdminBundle:CRUD</argument>
+			<tag name="sonata.admin" manager_type="doctrine_phpcr" group="nvbooster_starter" label="Rss Block" />
+			<call method="setRootPath">
+			    <argument>%cmf_content.persistence.phpcr.content_basepath%</argument>
+			</call>
+			<call method="setRouteBuilder">
+			    <argument type="service" id="sonata.admin.route.path_info_slashes"></argument>
+			</call>
+		</service>
+		<service id="nvbooster_starter.externalcontent_twigextension" class="%nvbooster_starter.externalcontent_twigextension.class%" public="false">
+			<argument type="service" id="service_container" />
+			<tag name="twig.extension" />
+		</service>
+		<service id="nvbooster_starter.blockattributes_twigextension" class="%nvbooster_starter.blockattributes_twigextension.class%">
+		    <tag name="twig.extension" />
+		</service>
     </services>
-    -->
 </container>
