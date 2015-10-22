@@ -31,8 +31,8 @@ class NvboosterStarterBundle extends Bundle
                     array('cmf_core.persistence.phpcr.manager_name'),
                     false,
                     array('NvboosterStarterBundle' => 'nvbooster\StarterBundle\Document')
-                    )
-                );
+                )
+            );
         }
     }
 }
