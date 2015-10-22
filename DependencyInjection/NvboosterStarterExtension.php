@@ -93,6 +93,7 @@ class NvboosterStarterExtension extends Extension implements PrependExtensionInt
                     )
                 ),
             );
+
             $container->prependExtensionConfig('sonata_block', $config);
         }
 

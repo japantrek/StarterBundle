@@ -9,7 +9,6 @@ Symfony CMF  bundle for easy start
 ## Documentation
 
 ### Installation
------------------------------------
 
 [Install Symfony CMF standart edition](http://symfony.com/doc/master/cmf/book/installation.html)
 
@@ -18,13 +17,19 @@ Add the package to your composer.json file
 "nvbooster/starter-bundle": "dev-master",
 ```
 
-Add this to app/AppKernel.php
+Add bundles to app/AppKernel.php
+
+**Note**: set NvboosterStarterBundle before CmfBlockBundle
+
 ```php
 <?php
     public function registerBundles()
     {
         $bundles = array(
             ...
+              new nvbooster\StarterBundle\NvboosterStarterBundle(),
+              new Symfony\Cmf\Bundle\BlockBundle\CmfBlockBundle(),
+            ...  
               new Symfony\Cmf\Bundle\CreateBundle\CmfCreateBundle(),
               new Symfony\Cmf\Bundle\MediaBundle\CmfMediaBundle(),
               new Burgov\Bundle\KeyValueFormBundle\BurgovKeyValueFormBundle(),
@@ -34,12 +39,9 @@ Add this to app/AppKernel.php
               new Sonata\AdminBundle\SonataAdminBundle(),
               new Sonata\jQueryBundle\SonatajQueryBundle(),
               new Symfony\Cmf\Bundle\TreeBrowserBundle\CmfTreeBrowserBundle(),
-              new Sonata\DoctrinePHPCRAdminBundle\SonataDoctrinePHPCRAdminBundle(),              
-              new nvbooster\StarterBundle\NvboosterStarterBundle(),
+              new Sonata\DoctrinePHPCRAdminBundle\SonataDoctrinePHPCRAdminBundle(),                            
         );
-
         ...
-
         return $bundles;
     }
 ```
@@ -57,7 +59,7 @@ starter_external:
 ```
 
 ### Configuration
------------------------------------
+
 ```
 nvbooster_starter:
     wrap_urls: true    #if true externalcontent twig filter will redirect all url links to external link landing page 
