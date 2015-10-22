@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+	    <parameter key="nvbooster_starter.persistence.phpcr.opcontent_basepath">/cms/onepagecontent</parameter>	    
+	    <parameter key="cmf_menu.persistence.phpcr.menu_basepath">/cms</parameter>
+    </parameters>
+    
+    <services>
+		<service id="nvbooster_starter.phpcr.initializer" class="Doctrine\Bundle\PHPCRBundle\Initializer\GenericInitializer">
+			<argument>nvbooster_starter initializer</argument>
+			<argument type="collection">
+                <argument>%nvbooster_starter.persistence.phpcr.opcontent_basepath%</argument>
+			</argument>
+			<tag name="doctrine_phpcr.initializer" />
+		</service>
+    </services>
+</container>

@@ -1,0 +1,29 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ cmfMainContent.title }}{% endblock %}
+
+{% block body %}
+
+	<div>
+        {% if cmfMainContent.sideMenu %}
+            {% set m = knp_menu_get(cmfMainContent.sideMenu) %}
+            <h2>{{ m.label }}</h2>
+            {{ knp_menu_render(cmfMainContent.sideMenu) }}
+        {% endif %}
+    </div>
+
+    {% createphp cmfMainContent as="rdf" noautotag %}
+        <div {{ createphp_attributes(rdf) }}>
+            <h2 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h2>
+            <div {{ createphp_attributes( rdf.body ) }}>{{ createphp_content( rdf.body ) }}</div>
+        </div>
+    {% endcreatephp %}
+
+    {% if cmfMainContent.additionalInfoBlock and cmf_children(cmfMainContent.additionalInfoBlock) | length %}
+        {% for child in cmf_children(cmfMainContent.additionalInfoBlock) %}
+            {{ sonata_block_render({
+                'name': 'additionalInfoBlock/' ~ child.name
+            }) }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

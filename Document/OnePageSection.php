@@ -2,7 +2,6 @@
 
 namespace nvbooster\StarterBundle\Document;
 
-use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCRODM;
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishTimePeriodInterface;
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishableInterface;
 use Knp\Menu\NodeInterface;
@@ -18,8 +17,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  * OnePageSection
  *
  * Секция страницы
- *
- * @PHPCRODM\Document(referenceable=true, translator="child")
  *
  * @author nvb <nvb@aproxima.ru>
  */

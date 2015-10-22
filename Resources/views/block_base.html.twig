@@ -1,0 +1,9 @@
+{% set a = block("block") %}
+
+<div {{ sonata_block_attr(block)  }}>
+    {% embed "@CmfBlock/Block/block_base.html.twig" %}
+    	{% block block %}
+    		{{ a | raw }}
+    	{% endblock %}
+    {% endembed %}
+</div>

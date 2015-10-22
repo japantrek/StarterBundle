@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ cmfMainContent.title }}{% endblock %}
+
+{% block body %}
+	{{ knp_menu_render(cmfMainContent.id) }}
+
+    <section id="{{ cmfMainContent.name }}" name="{{ cmfMainContent.name }}">
+        {% createphp cmfMainContent as="rdf" %}
+            {{ rdf.body|raw }}
+        {% endcreatephp %}
+    </section>
+
+    {% for sectionContent in cmfMainContent.sectionChildren %}
+        <section id="{{ sectionContent.name }}" name="{{ sectionContent.name }}">
+            {% if sectionContent.template %}
+                {% include sectionContent.template with {sectionContent: sectionContent} only %}
+            {% else %}
+                {% include '@NvboosterStarter/opsection.html.twig' with {sectionContent: sectionContent} only %}
+            {% endif %}
+        </section>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="nvbooster_starter.persistence.phpcr.opcontent_class">nvbooster\StarterBundle\Document\OnePageContent</parameter>
+        <parameter key="nvbooster_starter.persistence.phpcr.opcontent_section_class">nvbooster\StarterBundle\Document\OnePageSection</parameter>
+        <parameter key="nvbooster_starter.persistence.phpcr.unit_block_class">nvbooster\StarterBundle\Document\UnitBlock</parameter>
+	    
+	    <parameter key="nvbooster_starter.block.unit.service.class">nvbooster\StarterBundle\Block\UnitBlockService</parameter>
+    </parameters>
+    
+    <services>
+		<service id="nvbooster_starter.block.unit" class="%nvbooster_starter.block.unit.service.class%">
+			<argument>nvbooster_starter.block.unit</argument>
+			<argument type="service" id="templating" />
+			<tag name="sonata.block" />
+		</service>
+    </services>
+</container>

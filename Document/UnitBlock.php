@@ -45,7 +45,7 @@ class UnitBlock extends AbstractBlock
      */
     public function getType()
     {
-        return 'tpweb.block.unit';
+        return 'nvbooster_starter.block.unit';
     }
 
     /**

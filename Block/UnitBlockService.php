@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class UnitBlockService extends BaseBlockService
 {
-    protected $template = '@TPWeb/Block/unit.html.twig';
+    protected $template = '@NvboosterStarter/unitblock.html.twig';
 
     /**
      * {@inheritDoc}

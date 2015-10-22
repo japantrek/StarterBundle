@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ cmfMainContent.title }}{% endblock %}
+
+{% block body %}
+
+    {% if cmfMainContent.template %}
+        {% include sectionContent.template with {sectionContent: cmfMainContent} only %}
+    {% else %}
+        {% include '@NvboosterStarter/opsection.html.twig' with {sectionContent: cmfMainContent} only %}
+    {% endif %}
+
+{% endblock %}
