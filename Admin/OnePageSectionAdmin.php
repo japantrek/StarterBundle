@@ -51,9 +51,7 @@ class OnePageSectionAdmin extends Admin
             ->add('name', 'text')
             ->add('title', 'text')
             ->add('label', 'text', array('required' => false))
-            //->add('body', 'textarea', array('required' => false))
             ->add('template', 'text', array('required' => false))
-            //->add('extras', 'text', array('required' => false))
             ->add('content', 'doctrine_phpcr_odm_tree', array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->blocksRoot))
             ->add('block', 'doctrine_phpcr_odm_tree', array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->blocksRoot))
         ->end();

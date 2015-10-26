@@ -4,7 +4,7 @@ namespace nvbooster\StarterBundle\Twig;
 
 use HTMLPurifier;
 use Twig_Extension;
-use Twig_Filter_Method;
+use Twig_SimpleFilter;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -52,7 +52,10 @@ class ExternalContentTwigExtension extends Twig_Extension
     public function getFilters()
     {
         return array(
-            'external_content' => new Twig_Filter_Method($this, 'convertExternalContent', array('is_safe' => array('html'))));
+            new \Twig_SimpleFilter('external_content',
+                array($this, 'convertExternalContent'),
+                array('is_safe' => array('html')))
+        );
     }
 
     /**

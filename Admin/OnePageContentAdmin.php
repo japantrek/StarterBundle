@@ -47,7 +47,6 @@ class OnePageContentAdmin extends Admin
                 ->add('title', 'text')
                 ->add('label', 'text', array('required' => false))
                 ->add('body', 'textarea', array('required' => false))
-                //->add('extras', 'text', array('required' => false))
             ->end();
     }
 
