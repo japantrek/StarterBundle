@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Parser as YamlParser;
+use Symfony\Component\Yaml\Exception\ParseException;
 
 /**
  * This is the class that loads and manages your bundle configuration
