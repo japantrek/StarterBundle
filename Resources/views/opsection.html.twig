@@ -1,24 +1,18 @@
 <div {{ sonata_block_attr(sectionContent.content)  }}>
-    {% createphp sectionContent as="rdf" noautotag %}
-        <div {{ createphp_attributes(rdf) }}>
-            <h1 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h1>
-        </div>
-    {% endcreatephp %}
+    <div>
+        <h1>{{ sectionContent.title }}</h1>
+    </div>
     {% if sectionContent.content %}
     	{% if sectionContent.content.body is defined %}
-    	    {% createphp sectionContent.content as="rdf" noautotag %}
-                <div {{ createphp_attributes(rdf) }}>
-                    <div {{ createphp_attributes( rdf.body ) }}>{{ createphp_content( rdf.body ) }}</div>
-                </div>
-            {% endcreatephp %}
+            <div>{{ sectionContent.content.body }}</div>
         {% else %}
-        	<div>{{ sonata_block_render({ 'name': sectionContent.content.id }) }}</div>
+        	<div>{{ sonata_block_render(sectionContent.content) }}</div>
         {% endif %}
     {% endif %}
 
     {% if sectionContent.block %}
         <div>
-            {{ sonata_block_render({ 'name': sectionContent.block.id }) }}
+            {{ sonata_block_render(sectionContent.block) }}
         </div>
     {% endif %}
 </div>

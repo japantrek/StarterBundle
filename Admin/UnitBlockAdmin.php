@@ -19,7 +19,7 @@ class UnitBlockAdmin extends Admin
      *
      * @var string
      */
-    protected $translationDomain = 'TPWebBundle';
+    protected $translationDomain = 'NvboosterStarterBundle';
 
     /**
      * {@inheritDoc}

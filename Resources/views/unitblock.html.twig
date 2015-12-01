@@ -2,19 +2,17 @@
 
 
 {% block block %}
-    {% createphp block as="rdf" noautotag %}
-        <div {{ createphp_attributes(rdf) }}>
-            {% if block.url or block.route %}
-                <a href="{{ block.url is not null ? block.url : path(block.route) }}">
-            {% endif %}
+    <div>
+        {% if block.url or block.route %}
+            <a href="{{ block.url is not null ? block.url : path(block.route) }}">
+        {% endif %}
 
-            {% if block.image%}<div class="unit-image"><img src="{{ asset(block.image) }}"></div>{% endif %}
-            <h3 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h3>
-            <div {{ createphp_attributes( rdf.text ) }}>{{ createphp_content( rdf.text ) }}</div>
+        {% if block.image%}<div class="unit-image"><img src="{{ asset(block.image) }}"></div>{% endif %}
+        <h3>{{ block.title }}</h3>
+        <div>{{ block.text }}</div>
 
-            {% if block.url or block.route %}
-                </a>
-            {% endif %}
-        </div>
-    {% endcreatephp %}
+        {% if block.url or block.route %}
+            </a>
+        {% endif %}
+    </div>
 {% endblock %}

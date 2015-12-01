@@ -12,18 +12,12 @@
         {% endif %}
     </div>
 
-    {% createphp cmfMainContent as="rdf" noautotag %}
-        <div {{ createphp_attributes(rdf) }}>
-            <h2 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h2>
-            <div {{ createphp_attributes( rdf.body ) }}>{{ createphp_content( rdf.body ) }}</div>
-        </div>
-    {% endcreatephp %}
+    <div>
+        <h2>{{ cmfMainContent.title }}</h2>
+        <div>{{ cmfMainContent.body }}</div>
+    </div>
 
     {% if cmfMainContent.additionalInfoBlock and cmf_children(cmfMainContent.additionalInfoBlock) | length %}
-        {% for child in cmf_children(cmfMainContent.additionalInfoBlock) %}
-            {{ sonata_block_render({
-                'name': 'additionalInfoBlock/' ~ child.name
-            }) }}
-        {% endfor %}
+        {{ sonata_block_render(cmfMainContent.additionalInfoBlock) }}
     {% endif %}
 {% endblock %}

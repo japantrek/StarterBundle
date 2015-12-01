@@ -8,7 +8,6 @@
         <parameter key="nvbooster_starter.persistence.phpcr.opcontent_class">nvbooster\StarterBundle\Document\OnePageContent</parameter>
         <parameter key="nvbooster_starter.persistence.phpcr.opcontent_section_class">nvbooster\StarterBundle\Document\OnePageSection</parameter>
         <parameter key="nvbooster_starter.persistence.phpcr.unit_block_class">nvbooster\StarterBundle\Document\UnitBlock</parameter>
-	    
 	    <parameter key="nvbooster_starter.block.unit.service.class">nvbooster\StarterBundle\Block\UnitBlockService</parameter>
     </parameters>
     

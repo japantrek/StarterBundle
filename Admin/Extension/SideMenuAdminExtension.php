@@ -18,8 +18,11 @@ class SideMenuAdminExtension extends AdminExtension
      */
     public function configureFormFields(FormMapper $form)
     {
-        $form->add('sideMenu', 'text', array(
-            'required' => false
-        ))->end();
+        $form
+            ->add(
+                'sideMenu',
+                'doctrine_phpcr_odm_tree',
+                array('root_node' => $this->menuRoot, 'choice_list' => array(), 'select_root_node' => true))
+            ->end();
     }
 }
