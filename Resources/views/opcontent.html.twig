@@ -11,7 +11,7 @@
         {% endcreatephp %}
     </section>
 
-    {% for sectionContent in cmfMainContent.sectionChildren %}
+    {% for sectionContent in cmfMainContent.sectionChildren if cmf_is_published(sectionContent) %}
         <section id="{{ sectionContent.name }}" name="{{ sectionContent.name }}">
             {% if sectionContent.template %}
                 {% include sectionContent.template with {sectionContent: sectionContent} only %}

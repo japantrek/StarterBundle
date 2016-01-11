@@ -4,7 +4,7 @@
             <h1 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h1>
         </div>
     {% endcreatephp %}
-    {% if sectionContent.content %}
+    {% if sectionContent.content and if cmf_is_published(sectionContent.content) %}
     	{% if sectionContent.content.body is defined %}
     	    {% createphp sectionContent.content as="rdf" noautotag %}
                 <div {{ createphp_attributes(rdf) }}>
@@ -12,13 +12,13 @@
                 </div>
             {% endcreatephp %}
         {% else %}
-        	<div>{{ sonata_block_render({ 'name': sectionContent.content.id }) }}</div>
+        	<div>{{ sonata_block_render(sectionContent.content) }}</div>
         {% endif %}
     {% endif %}
 
-    {% if sectionContent.block %}
+    {% if sectionContent.block and cmf_is_published(sectionContent.block)%}
         <div>
-            {{ sonata_block_render({ 'name': sectionContent.block.id }) }}
+            {{ sonata_block_render(sectionContent.block) }}
         </div>
     {% endif %}
 </div>
