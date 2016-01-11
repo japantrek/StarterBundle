@@ -5,6 +5,7 @@ namespace nvbooster\StarterBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Doctrine\Bundle\PHPCRBundle\DependencyInjection\Compiler\DoctrinePhpcrMappingsPass;
+use nvbooster\StarterBundle\DependencyInjection\CompilerPass;
 
 /**
  * NvboosterStarterBundle
@@ -34,5 +35,6 @@ class NvboosterStarterBundle extends Bundle
                 )
             );
         }
+        $container->addCompilerPass(new CompilerPass());
     }
 }
