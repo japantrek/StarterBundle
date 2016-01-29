@@ -9,6 +9,7 @@ use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 /**
  * UnitBlockService
@@ -18,6 +19,15 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class UnitBlockService extends BaseBlockService
 {
     protected $template = '@NvboosterStarter/unitblock.html.twig';
+
+    public function __construct($name, EngineInterface $templating, $template = null)
+    {
+        parent::__construct($name, $templating);
+
+        if ($template) {
+            $this->template = $template;
+        }
+    }
 
     /**
      * {@inheritDoc}
