@@ -24,6 +24,7 @@ class ExternalContentTwigExtension extends Twig_Extension
 
     /**
      * @param ContainerInterface $container
+     * @param boolean            $urlRewrite
      */
     public function __construct(ContainerInterface $container, $urlRewrite = false)
     {
@@ -54,7 +55,8 @@ class ExternalContentTwigExtension extends Twig_Extension
         return array(
             new \Twig_SimpleFilter('external_content',
                 array($this, 'convertExternalContent'),
-                array('is_safe' => array('html')))
+                array('is_safe' => array('html'))
+            )
         );
     }
 

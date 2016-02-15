@@ -52,7 +52,7 @@ class BlockAttributesTwigExtension extends Twig_Extension
             }
         }
 
-        $attributesString = "";
+        $attributesString = '';
         foreach ($attributes as $key => $value) {
             $key = trim(mb_strtolower($key, 'utf8'));
 

@@ -11,6 +11,9 @@
         referenceable="true"
         >
         <field name="sideMenu" type="string" nullable="true"/>
+        <field name="publishable" type="boolean"/>
+        <field name="publishStartDate" type="date" nullable="true"/>
+        <field name="publishEndDate" type="date" nullable="true"/>
         <child name="seoMetadata">
             <cascade><cascade-persist /></cascade>
         </child>
