@@ -34,9 +34,19 @@ class UnitBlockService extends BaseBlockService
      */
     public function setDefaultSettings(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'template' => $this->template,
-        ));
+        //Override костыль позволяющий передавать любые настройки в блок
+        /* @var $block UnitBlock */
+        list(,$block) = func_get_args();
+        $resolver->setDefaults(
+            array_merge(
+                $block ?
+                    array_fill_keys(array_keys($block->getSettings()), null) :
+                    array(),
+                array(
+                    'template' => $this->template
+                )
+            )
+        );
     }
 
     /**

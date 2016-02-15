@@ -94,11 +94,12 @@ class NvboosterStarterExtension extends Extension implements PrependExtensionInt
                     )
                 ),
                 'dynamic' => array(
+                    /*
                     'templates_by_class' => array(
                         'nvbooster\StarterBundle\Document\SeoContent' => '@NvboosterStarter/seocontent.html.twig',
                         'nvbooster\StarterBundle\Document\OnePageContent' => '@NvboosterStarter/opcontent.html.twig',
                         'nvbooster\StarterBundle\Document\OnePageSection' => '@NvboosterStarter/opsection_standalone.html.twig'
-                    ),
+                    ),*/
                     'controllers_by_class' => array(
                         'Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute' => 'cmf_routing.redirect_controller:redirectAction',
                         'nvbooster\StarterBundle\Document\OnePageContent' => 'cmf_content.controller:indexAction'
