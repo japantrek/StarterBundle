@@ -131,7 +131,7 @@ class OnePageContent extends OnePageItem
 
             foreach ($this->children as $child) {
                 if (($child instanceof OnePageSection) ||
-                    ($child instanceof MenuNode)) {
+                    ($child instanceof NodeInterface)) {
                     $children[] = $child;
                 }
             }

@@ -49,6 +49,8 @@ sonata_doctrine_phpcr_admin:
         Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode:
             valid_children:
                 - Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode
+        nvbooster\StarterBundle\Document\MenuConnector:
+            valid_children: []
         Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Directory:
             valid_children:
                 - Symfony\Cmf\Bundle\MediaBundle\Doctrine\Phpcr\Directory
@@ -58,5 +60,6 @@ sonata_doctrine_phpcr_admin:
             valid_children:
                 - nvbooster\StarterBundle\Document\OnePageSection
                 - Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode
+                - nvbooster\StarterBundle\Document\MenuConnector
         nvbooster\StarterBundle\Document\OnePageSection:
             valid_children: []

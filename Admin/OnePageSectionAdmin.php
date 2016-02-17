@@ -19,7 +19,7 @@ class OnePageSectionAdmin extends Admin
      *
      * @var string
      */
-    protected $translationDomain = 'TPWebBundle';
+    protected $translationDomain = 'nvstarter';
 
     /**
      * @var string
