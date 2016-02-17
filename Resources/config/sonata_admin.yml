@@ -53,6 +53,7 @@ sonata_admin:
                 items:
                     - cmf_menu.menu_admin
                     - cmf_menu.node_admin
+                    - nvbooster_starter.menuconnector_admin
             opcontent:
                 label: One Page
                 items:

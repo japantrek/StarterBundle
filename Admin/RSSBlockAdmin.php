@@ -19,7 +19,7 @@ class RSSBlockAdmin extends Admin
      *
      * @var string
      */
-    protected $translationDomain = 'TPWebBundle';
+    protected $translationDomain = 'nvstarter';
 
     /**
      * {@inheritDoc}
