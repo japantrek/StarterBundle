@@ -99,6 +99,11 @@ class OnePageItem extends StaticContentBase implements
     protected $routes;
 
     /**
+     * @var \DateTime
+     */
+    protected $updatedAt;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -506,5 +511,25 @@ class OnePageItem extends StaticContentBase implements
     public function getRoutes()
     {
         return $this->routes;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     *
+     * @return OnePageItem
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

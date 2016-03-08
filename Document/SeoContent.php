@@ -72,6 +72,11 @@ class SeoContent extends StaticContentBase implements
     protected $sideMenu;
 
     /**
+     * @var \DateTime
+     */
+    protected $updatedAt;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -235,5 +240,23 @@ class SeoContent extends StaticContentBase implements
         $this->additionalInfoBlock = $block;
     }
 
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 
+    /**
+     * @param \DateTime $updatedAt
+     *
+     * @return SeoContent
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
 }

@@ -10,10 +10,15 @@
         translator="child"
         referenceable="true"
         >
+        <mixins>
+            <mixin type="mix:lastModified" />
+        </mixins>
+        
         <field name="sideMenu" type="string" nullable="true"/>
         <field name="publishable" type="boolean"/>
         <field name="publishStartDate" type="date" nullable="true"/>
         <field name="publishEndDate" type="date" nullable="true"/>
+        <field name="updatedAt" type="date" property="jcr:lastModified"/>
         <child name="seoMetadata">
             <cascade><cascade-persist /></cascade>
         </child>
