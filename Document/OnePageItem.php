@@ -10,7 +10,6 @@ use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 use Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr\SeoMetadata;
 use Symfony\Cmf\Component\Routing\RouteReferrersInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
-use Sonata\BlockBundle\Model\BlockInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Knp\Menu\NodeInterface;
 

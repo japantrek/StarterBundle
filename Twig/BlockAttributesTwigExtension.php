@@ -57,7 +57,7 @@ class BlockAttributesTwigExtension extends Twig_Extension
             $key = trim(mb_strtolower($key, 'utf8'));
 
             if (preg_match('@^[a-z][-a-z0-9]*$@', $key)) {
-                $attributesString .= $key . "=\"" . addslashes($value) . "\" ";
+                $attributesString .= $key . '="' . addslashes($value) . '" ';
             }
         }
 

@@ -114,7 +114,9 @@ class MenuConnector implements
     }
 
     /**
+     * {@inheritDoc}
      * @deprecated Use setParentDocument instead.
+     *
      */
     public function setParent($parent)
     {
@@ -122,6 +124,7 @@ class MenuConnector implements
     }
 
     /**
+     * {@inheritDoc}
      * @deprecated Use getParentDocument instead.
      */
     public function getParent()
@@ -383,9 +386,9 @@ class MenuConnector implements
     }
 
     /**
-     * @param boolean $dummy
+     * @param boolean $displayChildren
      *
-     * @return self
+     * @return MenuConnector
      */
     public function setDisplayChildren($displayChildren)
     {
@@ -427,7 +430,7 @@ class MenuConnector implements
     }
 
     /**
-     * @param NodeInterface $nodeInterface
+     * @param NodeInterface $connectedNode
      *
      * @return MenuConnector
      */
