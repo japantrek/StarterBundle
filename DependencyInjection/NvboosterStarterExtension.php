@@ -48,6 +48,7 @@ class NvboosterStarterExtension extends Extension implements PrependExtensionInt
         $loader->load('phpcr.xml');
         $loader->load('cmf.xml');
         $loader->load('admin.xml');
+        $loader->load('sitemap.xml');
         $loader->load('twigextensions.xml');
         $loader->load('externallinks.xml');
 

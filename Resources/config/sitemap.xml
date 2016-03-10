@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+
+<container
+        xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+	    <parameter key="nvbooster_starter.sitemap.loader.seocontent.class">nvbooster\StarterBundle\Sitemap\Loader\SeoContentLoader</parameter>
+	    <parameter key="nvbooster_starter.sitemap.guesser.seocontent.last_modified.class">nvbooster\StarterBundle\Sitemap\Guesser\SeoContentLastModifiedGuesser</parameter>
+	    <parameter key="nvbooster_starter.sitemap.loader.onepage.class">nvbooster\StarterBundle\Sitemap\Loader\OnePageItemLoader</parameter>
+	    <parameter key="nvbooster_starter.sitemap.guesser.onepage.last_modified.class">nvbooster\StarterBundle\Sitemap\Guesser\OnePageItemLastModifiedGuesser</parameter>
+	    <parameter key="nvbooster_starter.sitemap.voter.publish_workflow.class">nvbooster\StarterBundle\Sitemap\Voter\PublishWorkflowVoter</parameter>
+    </parameters>
+    <services>
+        <service id="nvbooster_starter.sitemap.loader.seocontent" class="%nvbooster_starter.sitemap.loader.seocontent.class%" public="false">
+            <argument type="service" id="doctrine_phpcr.odm.default_document_manager" />
+            <tag name="cmf_seo.sitemap.loader" priority="10"/>
+        </service>
+        <service id="nvbooster_starter.sitemap.guesser.seocontent.last_modified" class="%nvbooster_starter.sitemap.guesser.seocontent.last_modified.class%" public="false">
+            <tag name="cmf_seo.sitemap.guesser" priority="10"/>
+        </service>
+        <service id="nvbooster_starter.sitemap.loader.onepage" class="%nvbooster_starter.sitemap.loader.onepage.class%" public="false">
+            <argument type="service" id="doctrine_phpcr.odm.default_document_manager" />
+            <tag name="cmf_seo.sitemap.loader" priority="10"/>
+        </service>
+        <service id="nvbooster_starter.sitemap.guesser.onepage.last_modified" class="%nvbooster_starter.sitemap.guesser.onepage.last_modified.class%" public="false">
+            <tag name="cmf_seo.sitemap.guesser" priority="10"/>
+        </service>
+        <service id="nvbooster_starter.sitemap.voter.publish_workflow" class="%nvbooster_starter.sitemap.voter.publish_workflow.class%" public="false">
+            <argument type="service" id="cmf_core.publish_workflow.checker" />
+            <tag name="cmf_seo.sitemap.voter" priority="10"/>
+        </service>
+    </services>
+</container>
