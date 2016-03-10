@@ -12,6 +12,7 @@ use Symfony\Cmf\Component\Routing\RouteReferrersInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Knp\Menu\NodeInterface;
+use Symfony\Cmf\Bundle\SeoBundle\Extractor\OriginalRouteReadInterface;
 
 /**
  * OnePageItem
@@ -24,7 +25,8 @@ class OnePageItem extends StaticContentBase implements
     PublishableInterface,
     NodeInterface,
     MenuOptionsInterface,
-    RouteReferrersInterface
+    RouteReferrersInterface,
+    OriginalRouteReadInterface
 {
     /**
      * @var SeoMetadata
@@ -530,5 +532,16 @@ class OnePageItem extends StaticContentBase implements
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \Symfony\Cmf\Bundle\SeoBundle\Extractor\OriginalRouteReadInterface::getSeoOriginalRoute()
+     */
+    public function getSeoOriginalRoute()
+    {
+        list($route) = $this->routes;
+
+        return $route ? $route->getId() : false;
     }
 }

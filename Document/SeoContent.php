@@ -14,6 +14,7 @@ use Knp\Menu\NodeInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode;
 use Sonata\BlockBundle\Model\BlockInterface;
+use Symfony\Cmf\Bundle\SeoBundle\Extractor\OriginalRouteReadInterface;
 
 /**
  * SeoContent
@@ -27,7 +28,8 @@ class SeoContent extends StaticContentBase implements
     MenuNodeReferrersInterface,
     PublishTimePeriodInterface,
     PublishableInterface,
-    SeoAwareInterface
+    SeoAwareInterface,
+    OriginalRouteReadInterface
 {
     /**
      * @var SeoMetadata
@@ -258,5 +260,16 @@ class SeoContent extends StaticContentBase implements
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \Symfony\Cmf\Bundle\SeoBundle\Extractor\OriginalRouteReadInterface::getSeoOriginalRoute()
+     */
+    public function getSeoOriginalRoute()
+    {
+        list($route) = $this->routes;
+
+        return $route ? $route->getId() : false;
     }
 }

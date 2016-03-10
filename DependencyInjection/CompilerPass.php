@@ -19,5 +19,9 @@ class CompilerPass implements CompilerPassInterface
             $blockLoader = $container->getDefinition('cmf.block.slideshow');
             $blockLoader->replaceArgument(3, '@NvboosterStarter/block_slideshow.html.twig');
         }
+
+        if ($def = $container->getDefinition('cmf_seo.presentation')) {
+            $def->replaceArgument(3, null);
+        }
     }
 }
