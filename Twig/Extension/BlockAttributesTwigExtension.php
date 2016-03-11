@@ -1,6 +1,6 @@
 <?php
 
-namespace nvbooster\StarterBundle\Twig;
+namespace nvbooster\StarterBundle\Twig\Extension;
 
 use Twig_Extension;
 use Twig_SimpleFunction;

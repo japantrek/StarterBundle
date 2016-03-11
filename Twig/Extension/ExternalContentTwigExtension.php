@@ -1,6 +1,6 @@
 <?php
 
-namespace nvbooster\StarterBundle\Twig;
+namespace nvbooster\StarterBundle\Twig\Extension;
 
 use HTMLPurifier;
 use Twig_Extension;
@@ -39,6 +39,7 @@ class ExternalContentTwigExtension extends Twig_Extension
     {
         $config = \HTMLPurifier_Config::createDefault();
         $config->set('HTML.Allowed', '*[style|title],div,span,blockquote,code,pre,p,b,i,strong,br,ul,ol,li,dd,dt,dl,sup,sub,a[href],img[src|width|height|alt]');
+        $config->set('HTML.Nofollow', true);
         if ($this->urlRewrite) {
             $config->set('URI.Munge', $this->container->get('router')->generate('nvbooster_starter.external_link', array('go' => '')) . '%s');
         }
