@@ -29,6 +29,9 @@
         <field name="labelAttributes" type="string" assoc=""/>
         
         <field name="updatedAt" type="date" property="jcr:lastModified"/>
+        <field name="pageWeight" type="double" nullable="true"/>
+        <field name="updatePeriod" type="string" nullable="true"/>
+        <field name="visibleInSitemap" type="boolean"/>
         <child name="seoMetadata">
             <cascade><cascade-persist /></cascade>
         </child>

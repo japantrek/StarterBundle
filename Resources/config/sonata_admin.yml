@@ -24,6 +24,9 @@ sonata_admin:
         nvbooster_starter.admin_extension.settings:
             implements:
                 - Sonata\BlockBundle\Model\BlockInterface
+        nvbooster_starter.admin_extension.sitemap_parameters:
+            implements:
+                - nvbooster\StarterBundle\Sitemap\SitemapPropertiesInterface
 
     dashboard:
         blocks:
