@@ -10,6 +10,7 @@
 	    <parameter key="nvbooster_starter.unitblock_admin.class">nvbooster\StarterBundle\Admin\UnitBlockAdmin</parameter>
 	    <parameter key="nvbooster_starter.rssblock_admin.class">nvbooster\StarterBundle\Admin\RSSBlockAdmin</parameter>
 	    <parameter key="nvbooster_starter.menuconnector_admin.class">nvbooster\StarterBundle\Admin\MenuConnectorAdmin</parameter>
+	    <parameter key="nvbooster_starter.routecontainer_admin.class">nvbooster\StarterBundle\Admin\RouteContainerAdmin</parameter>
 	    <parameter key="nvbooster_starter.admin_extension.sidemenu.class">nvbooster\StarterBundle\Admin\Extension\SideMenuAdminExtension</parameter>
 	    <parameter key="nvbooster_starter.admin_extension.settings.class">nvbooster\StarterBundle\Admin\Extension\BlockSettingsAdminExtension</parameter>
     </parameters>
@@ -80,6 +81,21 @@
                 <argument>%cmf_menu.persistence.phpcr.menu_basepath%</argument>
             </call>
 		</service>
+		
+        <service id="nvbooster_starter.routecontainer_admin" class="%nvbooster_starter.routecontainer_admin.class%">
+            <tag name="sonata.admin" manager_type="doctrine_phpcr" group="nvbooster_starter" label="RouteContainer" />
+            <argument/>
+            <argument>nvbooster\StarterBundle\Document\RouteContainer</argument>
+            <argument>SonataAdminBundle:CRUD</argument>
+
+            <call method="setRouteBuilder">
+                <argument type="service" id="sonata.admin.route.path_info_slashes" />
+            </call>
+
+            <call method="setRouteRoot">
+                <argument>%cmf_routing.dynamic.persistence.phpcr.admin_basepath%</argument>
+            </call>
+        </service>
 		
         <service id="nvbooster_starter.admin_extension.sidemenu" class="%nvbooster_starter.admin_extension.sidemenu.class%">
             <tag name="sonata.admin.extension" target="cmf_content.admin"/>

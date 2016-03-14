@@ -41,8 +41,14 @@ sonata_doctrine_phpcr_admin:
             valid_children:
                 - Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route
                 - Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute
+                - nvbooster\StarterBundle\Document\RouteContainer
         Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute:
             valid_children: []
+        nvbooster\StarterBundle\Document\RouteContainer:
+            valid_children:
+                - Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route
+                - Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute
+                - nvbooster\StarterBundle\Document\RouteContainer
         Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu:
             valid_children:
                 - Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode
