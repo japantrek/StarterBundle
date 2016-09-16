@@ -3,6 +3,7 @@ namespace nvbooster\StarterBundle\Admin\Extension;
 
 use Sonata\AdminBundle\Admin\AdminExtension;
 use Sonata\AdminBundle\Form\FormMapper;
+use Burgov\Bundle\KeyValueFormBundle\Form\Type\KeyValueType;
 
 /**
  * BlockSettingsAdminExtension
@@ -21,7 +22,7 @@ class BlockSettingsAdminExtension extends AdminExtension
         $form
             ->add(
                 'settings',
-                'burgov_key_value',
+                KeyValueType::class,
                 array(
                     'value_type' => 'text',
                     'required' => false

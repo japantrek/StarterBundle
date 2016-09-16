@@ -4,15 +4,17 @@ namespace nvbooster\StarterBundle\Document;
 
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishTimePeriodInterface;
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishableInterface;
+use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 use Symfony\Cmf\Bundle\MenuBundle\Model\MenuOptionsInterface;
 use Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContentBase;
 use Symfony\Cmf\Bundle\SeoBundle\SeoAwareInterface;
 use Symfony\Cmf\Bundle\SeoBundle\Doctrine\Phpcr\SeoMetadata;
 use Symfony\Cmf\Component\Routing\RouteReferrersInterface;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
-use Sonata\BlockBundle\Model\BlockInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Knp\Menu\NodeInterface;
+use Symfony\Cmf\Bundle\SeoBundle\Extractor\OriginalRouteReadInterface;
+use nvbooster\StarterBundle\Sitemap\SitemapPropertiesInterface;
 
 /**
  * OnePageItem
@@ -25,7 +27,10 @@ class OnePageItem extends StaticContentBase implements
     PublishableInterface,
     NodeInterface,
     MenuOptionsInterface,
-    RouteReferrersInterface
+    RouteReferrersInterface,
+    OriginalRouteReadInterface,
+    SitemapPropertiesInterface,
+    TranslatableInterface
 {
     /**
      * @var SeoMetadata
@@ -97,6 +102,31 @@ class OnePageItem extends StaticContentBase implements
      * @var RouteObjectInterface[]
      */
     protected $routes;
+
+    /**
+     * @var \DateTime
+     */
+    protected $updatedAt;
+
+    /**
+     * @var double
+     */
+    protected $pageWeight;
+
+    /**
+     * @var string
+     */
+    protected $updatePeriod;
+
+    /**
+     * @var boolean
+     */
+    protected $visibleInSitemap;
+
+    /**
+     * @var string
+     */
+    protected $locale;
 
     /**
      * __construct
@@ -506,5 +536,117 @@ class OnePageItem extends StaticContentBase implements
     public function getRoutes()
     {
         return $this->routes;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     *
+     * @return OnePageItem
+     */
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \Symfony\Cmf\Bundle\SeoBundle\Extractor\OriginalRouteReadInterface::getSeoOriginalRoute()
+     */
+    public function getSeoOriginalRoute()
+    {
+        list($route) = $this->routes;
+
+        return $route ? $route->getId() : false;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     * @see \nvbooster\StarterBundle\Sitemap\SitemapPropertiesReadInterface::getPageWeight()
+     */
+    public function getPageWeight()
+    {
+        return $this->pageWeight;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \nvbooster\StarterBundle\Sitemap\SitemapPropertiesInterface::setPageWeight()
+     */
+    public function setPageWeight($weight)
+    {
+        $this->pageWeight = $weight;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \nvbooster\StarterBundle\Sitemap\SitemapPropertiesReadInterface::getUpdatePeriod()
+     */
+    public function getUpdatePeriod()
+    {
+        return $this->updatePeriod;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \nvbooster\StarterBundle\Sitemap\SitemapPropertiesInterface::setUpdatePeriod()
+     */
+    public function setUpdatePeriod($period)
+    {
+        $this->updatePeriod = $period;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \Symfony\Cmf\Bundle\SeoBundle\SitemapAwareInterface::isVisibleInSitemap()
+     */
+    public function getVisibleInSitemap()
+    {
+        return $this->visibleInSitemap;
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \Symfony\Cmf\Bundle\SeoBundle\SitemapAwareInterface::isVisibleInSitemap()
+     */
+    public function isVisibleInSitemap($sitemap)
+    {
+        return (bool) $this->getVisibleInSitemap();
+    }
+
+    /**
+     * {@inheritdoc}
+     * @see \nvbooster\StarterBundle\Sitemap\SitemapPropertiesInterface::setVisibleInSitemap()
+     */
+    public function setVisibleInSitemap($visible)
+    {
+        $this->visibleInSitemap = $visible;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

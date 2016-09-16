@@ -5,15 +5,15 @@ use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use nvbooster\StarterBundle\Document\UnitBlock;
+use nvbooster\StarterBundle\Document\OnePageSection;
 use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
 
 /**
- * UnitBlockAdmin
+ * MenuConnectorAdmin
  *
  * @author nvb <nvb@aproxima.ru>
  */
-class UnitBlockAdmin extends Admin
+class MenuConnectorAdmin extends Admin
 {
     /**
      * {@inheritDoc}
@@ -21,6 +21,11 @@ class UnitBlockAdmin extends Admin
      * @var string
      */
     protected $translationDomain = 'nvstarter';
+
+    /**
+     * @var string
+     */
+    protected $menuRoot;
 
     /**
      * {@inheritDoc}
@@ -31,7 +36,7 @@ class UnitBlockAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('id', 'text')
-            ->addIdentifier('name', 'text');
+            ->add('name', 'text');
     }
 
     /**
@@ -43,14 +48,11 @@ class UnitBlockAdmin extends Admin
     {
         $formMapper
             ->with('form.group_general')
-                ->add('parentDocument', TreeModelType::class, array('choice_list' => array(), 'root_node' => $this->getRootPath()))
-                ->add('name', 'text')
-                ->add('title', 'text', array('required' => false))
-                ->add('image', 'text', array('required' => false))
-                ->add('route', 'text', array('required' => false))
-                ->add('url', 'url', array('required' => false))
-                ->add('text', 'textarea')
-            ->end();
+            ->add('parentDocument', TreeModelType::class, array('choice_list' => array(), 'root_node' => $this->getRootPath()))
+            ->add('name', 'text')
+            ->add('label', 'text', array('required' => false))
+            ->add('connectedNode', TreeModelType::class, array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->menuRoot))
+        ->end();
     }
 
     /**
@@ -60,7 +62,9 @@ class UnitBlockAdmin extends Admin
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
-        $datagridMapper->add('name', 'doctrine_phpcr_string');
+        $datagridMapper
+            ->add('node', 'doctrine_phpcr_nodename')
+            ->add('label', 'doctrine_phpcr_string');
     }
 
     /**
@@ -74,14 +78,22 @@ class UnitBlockAdmin extends Admin
     }
 
     /**
+     * @param string $menuRoot
+     */
+    public function setMenuRoot($menuRoot)
+    {
+        $this->menuRoot = $menuRoot;
+    }
+
+    /**
      * {@inheritDoc}
      *
      * @see \Sonata\DoctrinePHPCRAdminBundle\Admin\Admin::toString()
      */
     public function toString($object)
     {
-        return $object instanceof UnitBlock && $object->getName()
-        ? $object->getName()
+        return $object instanceof OnePageSection && $object->getTitle()
+        ? $object->getTitle()
         : $this->trans('link_add', array(), 'SonataAdminBundle');
     }
 }

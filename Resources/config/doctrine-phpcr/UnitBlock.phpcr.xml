@@ -8,9 +8,12 @@
     <document
         name="nvbooster\StarterBundle\Document\UnitBlock"
         referenceable="true"
+        translator="attribute"
         >
-        <field name="title" type="string" nullable="true"/>
-        <field name="text" type="string"/>
+        <locale name="locale"/>
+        
+        <field name="title" type="string" nullable="true" translated="true"/>
+        <field name="text" type="string" translated="true"/>
         <field name="url" type="string" nullable="true"/>
         <field name="route" type="string" nullable="true"/>
         <field name="image" type="string" nullable="true"/>

@@ -20,6 +20,19 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('nvbooster_starter');
 
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('templates')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('containerblock')->defaultFalse()->treatNullLike('@NvboosterStarter/block_container.html.twig')->end()
+                        ->scalarNode('slideshowblock')->defaultFalse()->treatNullLike('@NvboosterStarter/block_slideshow.html.twig')->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+
         return $treeBuilder;
     }
 }

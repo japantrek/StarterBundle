@@ -1,6 +1,6 @@
 <?php
 
-namespace nvbooster\StarterBundle\Twig;
+namespace nvbooster\StarterBundle\Twig\Extension;
 
 use Twig_Extension;
 use Twig_SimpleFunction;
@@ -30,28 +30,34 @@ class BlockAttributesTwigExtension extends Twig_Extension
     /**
      * @param BlockInterface $block
      * @param array          $attributes
+     * @param string         $prefix
      *
      * @return string
      */
-    public function renderAttributes(BlockInterface $block = null, $attributes = array())
+    public function renderAttributes(BlockInterface $block = null, $attributes = array(), $prefix = 'attr')
     {
+        if ($attributes && is_string($attributes)) {
+            $prefix = $attributes;
+            $attributes = array();
+        }
+
         if ($block) {
             foreach ($block->getSettings() as $key => $value) {
                 $key = trim(mb_strtolower($key, 'utf8'));
                 $match = null;
 
-                if (preg_match('@^attr-([a-z][-a-z0-9]*)$@', $key, $match)) {
+                if (preg_match('@^' . preg_quote($prefix) . '-([a-z][-a-z0-9]*)$@', $key, $match)) {
                     $attributes[$match[1]] = $value;
                 }
             }
         }
 
-        $attributesString = "";
+        $attributesString = '';
         foreach ($attributes as $key => $value) {
             $key = trim(mb_strtolower($key, 'utf8'));
 
             if (preg_match('@^[a-z][-a-z0-9]*$@', $key)) {
-                $attributesString .= $key . "=\"" . addslashes($value) . "\" ";
+                $attributesString .= $key . '="' . addslashes($value) . '" ';
             }
         }
 

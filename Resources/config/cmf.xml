@@ -15,6 +15,7 @@
 		<service id="nvbooster_starter.block.unit" class="%nvbooster_starter.block.unit.service.class%">
 			<argument>nvbooster_starter.block.unit</argument>
 			<argument type="service" id="templating" />
+			<argument/>
 			<tag name="sonata.block" />
 		</service>
     </services>

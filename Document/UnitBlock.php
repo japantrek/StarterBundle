@@ -3,6 +3,7 @@
 namespace nvbooster\StarterBundle\Document;
 
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
+use Symfony\Cmf\Bundle\CoreBundle\Translatable\TranslatableInterface;
 
 /**
  * UnitBlock
@@ -11,7 +12,7 @@ use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\AbstractBlock;
  *
  * @author nvb <nvb@aproxima.ru>
  */
-class UnitBlock extends AbstractBlock
+class UnitBlock extends AbstractBlock implements TranslatableInterface
 {
     /**
      * @var string
@@ -37,6 +38,11 @@ class UnitBlock extends AbstractBlock
      * @var string
      */
     protected $image;
+
+    /**
+     * @var string
+     */
+    protected $locale;
 
     /**
      * {@inheritDoc}
@@ -126,5 +132,21 @@ class UnitBlock extends AbstractBlock
     public function getRoute()
     {
         return $this->route;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

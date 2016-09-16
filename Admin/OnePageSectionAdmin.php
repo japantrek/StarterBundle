@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use nvbooster\StarterBundle\Document\OnePageSection;
+use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
 
 /**
  * OnePageSectionAdmin
@@ -19,7 +20,7 @@ class OnePageSectionAdmin extends Admin
      *
      * @var string
      */
-    protected $translationDomain = 'NvboosterStarterBundle';
+    protected $translationDomain = 'nvstarter';
 
     /**
      * @var string
@@ -47,13 +48,13 @@ class OnePageSectionAdmin extends Admin
     {
         $formMapper
             ->with('form.group_general')
-            ->add('parentDocument', 'doctrine_phpcr_odm_tree', array('choice_list' => array(), 'root_node' => $this->getRootPath()))
+            ->add('parentDocument', TreeModelType::class, array('choice_list' => array(), 'root_node' => $this->getRootPath()))
             ->add('name', 'text')
             ->add('title', 'text')
             ->add('label', 'text', array('required' => false))
             ->add('template', 'text', array('required' => false))
-            ->add('content', 'doctrine_phpcr_odm_tree', array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->blocksRoot))
-            ->add('block', 'doctrine_phpcr_odm_tree', array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->blocksRoot))
+            ->add('content', TreeModelType::class, array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->blocksRoot))
+            ->add('block', TreeModelType::class, array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->blocksRoot))
         ->end();
     }
 

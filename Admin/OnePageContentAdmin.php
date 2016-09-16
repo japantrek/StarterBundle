@@ -6,6 +6,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use nvbooster\StarterBundle\Document\OnePageContent;
+use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
 
 /**
  * OnePageContentAdmin
@@ -19,7 +20,8 @@ class OnePageContentAdmin extends Admin
      *
      * @var string
      */
-    protected $translationDomain = 'NvboosterStarterBundle';
+
+    protected $translationDomain = 'nvstarter';
 
     /**
      * {@inheritDoc}
@@ -42,7 +44,7 @@ class OnePageContentAdmin extends Admin
     {
         $formMapper
             ->with('form.group_general')
-                ->add('parentDocument', 'doctrine_phpcr_odm_tree', array('choice_list' => array()))
+                ->add('parentDocument', TreeModelType::class, array('choice_list' => array()))
                 ->add('name', 'text')
                 ->add('title', 'text')
                 ->add('label', 'text', array('required' => false))

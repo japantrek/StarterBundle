@@ -3,12 +3,13 @@
 namespace nvbooster\StarterBundle\Block;
 
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Block\BaseBlockService;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 
 /**
  * UnitBlockService
@@ -17,16 +18,39 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
  */
 class UnitBlockService extends BaseBlockService
 {
-    protected $template = '@NvboosterStarter/unitblock.html.twig';
+    protected $template = 'NvboosterStarterBundle::unitblock.html.twig';
+
+    /**
+     * @param string          $name
+     * @param EngineInterface $templating
+     * @param string          $template
+     */
+    public function __construct($name, EngineInterface $templating, $template = null)
+    {
+        parent::__construct($name, $templating);
+
+        if ($template) {
+            $this->template = $template;
+        }
+    }
 
     /**
      * {@inheritDoc}
      */
-    public function setDefaultSettings(OptionsResolverInterface $resolver)
+    public function configureSettings(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'template' => $this->template,
-        ));
+        //Override костыль позволяющий передавать любые настройки в блок
+        /* @var $block UnitBlock */
+        list(,$block) = func_get_args();
+        $defaults = array_merge(
+            $block ?
+                array_fill_keys(array_keys($block->getSettings()), null) :
+                array(),
+            array(
+                'template' => $this->template
+            )
+        );
+        $resolver->setDefaults($defaults);
     }
 
     /**
