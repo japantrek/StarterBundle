@@ -20,18 +20,6 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('nvbooster_starter');
 
-        $rootNode
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->booleanNode('wrap_urls')->defaultFalse()->end()
-                ->arrayNode('templates')
-                    ->children()
-                        ->scalarNode('externallink')->defaultValue(false)->end()
-                    ->end()
-                ->end()
-            ->end()
-        ;
-
         return $treeBuilder;
     }
 }

@@ -11,6 +11,9 @@ use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishTimePeriodInterface;
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Knp\Menu\NodeInterface;
+use Symfony\Cmf\Component\Routing\RouteObjectInterface;
+use Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode;
+use Sonata\BlockBundle\Model\BlockInterface;
 
 /**
  * SeoContent
@@ -33,7 +36,7 @@ class SeoContent extends StaticContentBase implements
     protected $seoMetadata;
 
     /**
-     * @var additionalInfoBlock
+     * @var BlockInterface additionalInfoBlock
      *
      */
     protected $additionalInfoBlock;
@@ -227,7 +230,7 @@ class SeoContent extends StaticContentBase implements
      * @param BlockInterface $block must be persistable through cascade by the
      *                              persistence layer.
      */
-    public function setAdditionalInfoBlock($block)
+    public function setAdditionalInfoBlock(BlockInterface $block = null)
     {
         $this->additionalInfoBlock = $block;
     }

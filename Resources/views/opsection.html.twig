@@ -6,11 +6,7 @@
     {% endcreatephp %}
     {% if sectionContent.content and if cmf_is_published(sectionContent.content) %}
     	{% if sectionContent.content.body is defined %}
-    	    {% createphp sectionContent.content as="rdf" noautotag %}
-                <div {{ createphp_attributes(rdf) }}>
-                    <div {{ createphp_attributes( rdf.body ) }}>{{ createphp_content( rdf.body ) }}</div>
-                </div>
-            {% endcreatephp %}
+            <div>{{ sectionContent.content.body }}</div>
         {% else %}
         	<div>{{ sonata_block_render(sectionContent.content) }}</div>
         {% endif %}

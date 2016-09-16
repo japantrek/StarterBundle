@@ -5,17 +5,10 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>	    
-	    <parameter key="nvbooster_starter.externalcontent_twigextension.class">nvbooster\StarterBundle\Twig\ExternalContentTwigExtension</parameter>
 	    <parameter key="nvbooster_starter.blockattributes_twigextension.class">nvbooster\StarterBundle\Twig\BlockAttributesTwigExtension</parameter>
     </parameters>
     
     <services>
-		<service id="nvbooster_starter.externalcontent_twigextension" class="%nvbooster_starter.externalcontent_twigextension.class%" public="false">
-			<argument type="service" id="service_container" />
-			<argument>false</argument>
-			<tag name="twig.extension" />
-		</service>
-		
 		<service id="nvbooster_starter.blockattributes_twigextension" class="%nvbooster_starter.blockattributes_twigextension.class%">
 		    <tag name="twig.extension" />
 		</service>		

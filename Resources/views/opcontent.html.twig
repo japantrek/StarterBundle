@@ -6,9 +6,7 @@
 	{{ knp_menu_render(cmfMainContent.id) }}
 
     <section id="{{ cmfMainContent.name }}" name="{{ cmfMainContent.name }}">
-        {% createphp cmfMainContent as="rdf" %}
-            {{ rdf.body|raw }}
-        {% endcreatephp %}
+	   {{ cmfMainContent.body }}
     </section>
 
     {% for sectionContent in cmfMainContent.sectionChildren if cmf_is_published(sectionContent) %}
