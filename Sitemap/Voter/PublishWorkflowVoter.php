@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\SecurityContextInterface;
 class PublishWorkflowVoter implements VoterInterface
 {
     /**
-     * @var SecurityContextInterface
+     * @var PublishWorkflowChecker
      */
     private $publishWorkflowChecker;
 
