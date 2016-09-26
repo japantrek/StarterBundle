@@ -12,7 +12,7 @@
 
         {% if settings.divisible_by and settings.child_class %}
             {# start child #}
-            <div class="{{ settings.child_class }}"
+            <div class="{{ settings.child_class }}">
         {% endif %}
         {{ sonata_block_render(childBlock) }}
         {% if settings.divisible_by and settings.child_class %}
