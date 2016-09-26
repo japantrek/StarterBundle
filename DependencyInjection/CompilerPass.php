@@ -18,21 +18,43 @@ class CompilerPass implements CompilerPassInterface
     {
         $bundles = $container->getParameter('kernel.bundles');
         if (isset($bundles['CmfBlockBundle'])) {
+            $prefix = $container->getParameter('nvbooster_starter.block.attribute.prefix');
+            $blockLoader = $container->getDefinition('cmf.block.container');
+            $blockLoader->setClass('nvbooster\StarterBundle\Block\ContainerBlockService');
+            $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
             if (
                 $container->hasParameter('nvbooster_starter.template.containerblock') &&
                 $template = $container->getParameter('nvbooster_starter.template.containerblock')
             ) {
-                $blockLoader = $container->getDefinition('cmf.block.container');
                 $blockLoader->replaceArgument(3, $template);
             }
 
+            $blockLoader = $container->getDefinition('cmf.block.slideshow');
             if (
                 $container->hasParameter('nvbooster_starter.template.slideshowblock') &&
                 $template = $container->getParameter('nvbooster_starter.template.slideshowblock')
             ) {
-                $blockLoader = $container->getDefinition('cmf.block.slideshow');
                 $blockLoader->replaceArgument(3, $template);
             }
+
+            $blockLoader = $container->getDefinition('cmf.block.string');
+            $blockLoader->setClass('nvbooster\StarterBundle\Block\StringBlockService');
+            $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
+
+            $blockLoader = $container->getDefinition('cmf.block.simple');
+            $blockLoader->setClass('nvbooster\StarterBundle\Block\SimpleBlockService');
+            $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
+
+            $blockLoader = $container->getDefinition('cmf.block.action');
+            $blockLoader->setClass('nvbooster\StarterBundle\Block\ActionBlockService');
+            $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
+
+            if ($container->hasDefinition('cmf.block.imagine')) {
+                $blockLoader = $container->getDefinition('cmf.block.imagine');
+                $blockLoader->setClass('nvbooster\StarterBundle\Block\StringBlockService');
+                $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
+            }
+
         }
 
         if ($def = $container->getDefinition('cmf_seo.presentation')) {
