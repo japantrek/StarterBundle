@@ -18,6 +18,7 @@
         
         <field name="body" type="string" nullable="true" translated="true"/>
         <field name="label" type="string" nullable="true" translated="true"/>
+        <field name="title" type="string" nullable="true" translated="true"/>
 
         <field name="publishable" type="boolean"/>
         <field name="publishStartDate" type="date" nullable="true"/>
