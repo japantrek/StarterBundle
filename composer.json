@@ -23,9 +23,9 @@
         "symfony-cmf/routing" : "^1.4",
         "symfony-cmf/routing-bundle" : "^2.0",
         "knplabs/knp-menu" : "^2.0",
-		"helios-ag/fm-elfinder-bundle" : "^6.2",
-		"liip/imagine-bundle" : "^1.6",
-		"sonata-project/doctrine-phpcr-admin-bundle" : "^2.0",
+        "helios-ag/fm-elfinder-bundle" : "^6.2|~7.0|~8.0",
+        "liip/imagine-bundle" : "^1.6",
+	"sonata-project/doctrine-phpcr-admin-bundle" : "^2.0",
         "sonata-project/admin-bundle" : "^3.2",
         "sonata-project/translation-bundle" : "^2.0"
 	},
