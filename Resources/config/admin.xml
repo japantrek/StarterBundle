@@ -78,10 +78,6 @@
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />
             </call>
 
-            <call method="setContentRoot">
-                <argument>%cmf_sonata_phpcr_admin_integration.routing.content_basepath%</argument>
-            </call>
-
             <call method="setRootPath">
                 <argument>%cmf_sonata_phpcr_admin_integration.routing.basepath%</argument>
             </call>
