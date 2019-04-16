@@ -19,22 +19,12 @@ trait BlockServiceTrait
      */
     public function configureSettings(OptionsResolver $resolver)
     {
-        list(,$block) = func_get_args();
-        parent::configureSettings($resolver, $block);
-
-        if ($block) {
-            $resolver->setDefaults(
-                array_fill_keys(
-                    array_filter(
-                        array_keys($block->getSettings()),
-                        function ($a) {
-                            return 0 === strpos($a, $this->prefix);
-                        }
-                    ),
-                    null
-                )
-            );
-        }
+        parent::configureSettings($resolver);
+        $resolver->setDefined(array_map(function ($attr) { return $this->prefix . $attr; }, [
+            'id',
+            'class',
+            'style',
+        ]));
     }
 
     /**

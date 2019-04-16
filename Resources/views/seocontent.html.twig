@@ -14,7 +14,7 @@
 
     <div>
         <h2>{{ cmfMainContent.title }}</h2>
-        <div>{{ cmfMainContent.body }}</div>
+        <div>{{ cmfMainContent.body | raw }}</div>
     </div>
 
     {% if cmfMainContent.additionalInfoBlock and cmf_children(cmfMainContent.additionalInfoBlock) | length %}

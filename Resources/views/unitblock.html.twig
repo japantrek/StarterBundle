@@ -9,7 +9,7 @@
 
         {% if block.image%}<div class="unit-image"><img src="{{ asset(block.image) }}"></div>{% endif %}
         <h3>{{ block.title }}</h3>
-        <div>{{ block.text }}</div>
+        <div>{{ block.text | raw }}</div>
 
         {% if block.url or block.route %}
             </a>
