@@ -3,6 +3,8 @@ namespace nvbooster\StarterBundle\Admin\Extension;
 
 use Sonata\AdminBundle\Admin\AdminExtension;
 use Sonata\AdminBundle\Form\FormMapper;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 /**
  * SideMenuAdminExtension
@@ -35,11 +37,11 @@ class SitemapPropertiesAdminExtension extends AdminExtension
     {
         $form
             ->with('Sitemap')
-                ->add('visibleInSitemap', 'checkbox', array(
+                ->add('visibleInSitemap', CheckboxType::class, array(
                     'label' => 'Add to sitemap',
                     'required' => false
                 ))
-                ->add('pageWeight', 'choice', array(
+                ->add('pageWeight', ChoiceType::class, array(
                     'required' => false,
                     'label' => 'Page priority',
                     'choices' => array(
@@ -57,7 +59,7 @@ class SitemapPropertiesAdminExtension extends AdminExtension
                         '1.0' => '1.0'
                     )
                 ))
-                ->add('updatePeriod', 'choice', array(
+                ->add('updatePeriod', ChoiceType::class, array(
                     'required' => false,
                     'label' => 'Update frequency',
                     'choices' => array(

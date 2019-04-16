@@ -41,7 +41,7 @@ class SeoContentLastModifiedGuesser implements GuesserInterface
     /**
      * @param object $block
      *
-     * @return DateTime
+     * @return \DateTime
      */
     public static function recursiveBlockUpdateDate($block)
     {

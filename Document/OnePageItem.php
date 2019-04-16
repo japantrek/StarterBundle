@@ -452,7 +452,7 @@ class OnePageItem extends StaticContentBase implements
      *
      * @param array $extras
      *
-     * @return StaticContent - this instance
+     * @return self - this instance
      */
     public function setExtras(array $extras)
     {
@@ -467,7 +467,7 @@ class OnePageItem extends StaticContentBase implements
      * @param string $name  name
      * @param string $value the new value, null removes the entry
      *
-     * @return StaticContent
+     * @return self
      */
     public function setExtra($name, $value)
     {
@@ -483,7 +483,7 @@ class OnePageItem extends StaticContentBase implements
     /**
      * Get children
      *
-     * @return ArrayCollection|ChildrenCollection
+     * @return ArrayCollection
      */
     public function getChildren()
     {

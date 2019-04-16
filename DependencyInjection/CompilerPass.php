@@ -29,14 +29,6 @@ class CompilerPass implements CompilerPassInterface
                 $blockLoader->replaceArgument(3, $template);
             }
 
-            $blockLoader = $container->getDefinition('cmf.block.slideshow');
-            if (
-                $container->hasParameter('nvbooster_starter.template.slideshowblock') &&
-                $template = $container->getParameter('nvbooster_starter.template.slideshowblock')
-            ) {
-                $blockLoader->replaceArgument(3, $template);
-            }
-
             $blockLoader = $container->getDefinition('cmf.block.string');
             $blockLoader->setClass('nvbooster\StarterBundle\Block\StringBlockService');
             $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
@@ -48,13 +40,6 @@ class CompilerPass implements CompilerPassInterface
             $blockLoader = $container->getDefinition('cmf.block.action');
             $blockLoader->setClass('nvbooster\StarterBundle\Block\ActionBlockService');
             $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
-
-            if ($container->hasDefinition('cmf.block.imagine')) {
-                $blockLoader = $container->getDefinition('cmf.block.imagine');
-                $blockLoader->setClass('nvbooster\StarterBundle\Block\StringBlockService');
-                $blockLoader->addMethodCall('setAttributesPrefix', array($prefix));
-            }
-
         }
 
         if ($def = $container->getDefinition('cmf_seo.presentation')) {

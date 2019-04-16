@@ -1,12 +1,14 @@
 <?php
 namespace nvbooster\StarterBundle\Admin;
 
-use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use nvbooster\StarterBundle\Document\OnePageContent;
+use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use nvbooster\StarterBundle\Document\OnePageContent;
 
 /**
  * OnePageContentAdmin
@@ -45,10 +47,10 @@ class OnePageContentAdmin extends Admin
         $formMapper
             ->with('form.group_general')
                 ->add('parentDocument', TreeModelType::class, array('choice_list' => array()))
-                ->add('name', 'text')
-                ->add('title', 'text')
-                ->add('label', 'text', array('required' => false))
-                ->add('body', 'textarea', array('required' => false))
+                ->add('name', TextType::class)
+                ->add('title', TextType::class)
+                ->add('label', TextType::class, array('required' => false))
+                ->add('body', TextareaType::class, array('required' => false))
             ->end();
     }
 

@@ -36,7 +36,7 @@ class SideMenuAdminExtension extends AdminExtension
             ->add('sideMenu', TreeModelType::class, array(
                 'required' => false,
                 'root_node' => $this->menuRoot,
-                'choice_list' => array(),
+                'choice_list' => [],
                 'select_root_node' => false)
             )
             ->end();

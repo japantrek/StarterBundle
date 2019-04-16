@@ -39,9 +39,5 @@ class NvboosterStarterExtension extends Extension
         if ($tpl = $config['templates']['containerblock']) {
             $container->setParameter('nvbooster_starter.template.containerblock', $tpl);
         }
-
-        if ($tpl = $config['templates']['slideshowblock']) {
-            $container->setParameter('nvbooster_starter.template.slideshowblock', $tpl);
-        }
     }
 }

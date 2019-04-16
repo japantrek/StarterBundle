@@ -7,6 +7,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use nvbooster\StarterBundle\Document\UnitBlock;
 use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 /**
  * UnitBlockAdmin
@@ -44,12 +47,12 @@ class UnitBlockAdmin extends Admin
         $formMapper
             ->with('form.group_general')
                 ->add('parentDocument', TreeModelType::class, array('choice_list' => array(), 'root_node' => $this->getRootPath()))
-                ->add('name', 'text')
-                ->add('title', 'text', array('required' => false))
-                ->add('image', 'text', array('required' => false))
-                ->add('route', 'text', array('required' => false))
-                ->add('url', 'url', array('required' => false))
-                ->add('text', 'textarea')
+                ->add('name', TextType::class)
+                ->add('title', TextType::class, array('required' => false))
+                ->add('image', TextType::class, array('required' => false))
+                ->add('route', TextType::class, array('required' => false))
+                ->add('url', UrlType::class, array('required' => false))
+                ->add('text', TextareaType::class)
             ->end();
     }
 

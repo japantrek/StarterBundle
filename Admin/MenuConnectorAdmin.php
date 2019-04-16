@@ -1,12 +1,13 @@
 <?php
 namespace nvbooster\StarterBundle\Admin;
 
-use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use nvbooster\StarterBundle\Document\OnePageSection;
+use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
 use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use nvbooster\StarterBundle\Document\OnePageSection;
 
 /**
  * MenuConnectorAdmin
@@ -49,8 +50,8 @@ class MenuConnectorAdmin extends Admin
         $formMapper
             ->with('form.group_general')
             ->add('parentDocument', TreeModelType::class, array('choice_list' => array(), 'root_node' => $this->getRootPath()))
-            ->add('name', 'text')
-            ->add('label', 'text', array('required' => false))
+            ->add('name', TextType::class)
+            ->add('label', TextType::class, array('required' => false))
             ->add('connectedNode', TreeModelType::class, array('choice_list' => array(), 'required' => false, 'select_root_node' => false, 'root_node' => $this->menuRoot))
         ->end();
     }

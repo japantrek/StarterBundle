@@ -137,6 +137,22 @@ class MenuConnector implements
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public function setParent($parent)
+    {
+        $this->setParentDocument($parent);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getParent()
+    {
+        return $this->getParentDocument();
+    }
+
+    /**
      * @return string
      */
     public function getName()

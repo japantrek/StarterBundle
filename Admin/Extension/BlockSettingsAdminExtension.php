@@ -4,6 +4,7 @@ namespace nvbooster\StarterBundle\Admin\Extension;
 use Sonata\AdminBundle\Admin\AdminExtension;
 use Sonata\AdminBundle\Form\FormMapper;
 use Burgov\Bundle\KeyValueFormBundle\Form\Type\KeyValueType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * BlockSettingsAdminExtension
@@ -20,14 +21,10 @@ class BlockSettingsAdminExtension extends AdminExtension
     public function configureFormFields(FormMapper $form)
     {
         $form
-            ->add(
-                'settings',
-                KeyValueType::class,
-                array(
-                    'value_type' => 'text',
-                    'required' => false
-                )
-            )
+            ->add('settings', KeyValueType::class, [
+                'value_type' => TextType::class,
+                'required' => false,
+            ])
             ->end();
     }
 }

@@ -27,7 +27,6 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('containerblock')->defaultFalse()->treatNullLike('@NvboosterStarter/block_container.html.twig')->end()
-                        ->scalarNode('slideshowblock')->defaultFalse()->treatNullLike('@NvboosterStarter/block_slideshow.html.twig')->end()
                     ->end()
                 ->end()
             ->end()

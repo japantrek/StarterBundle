@@ -6,8 +6,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\DoctrinePHPCRAdminBundle\Admin\Admin;
-use Symfony\Cmf\Bundle\RoutingBundle\Model\Route;
 use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeModelType;
+use Symfony\Cmf\Bundle\RoutingBundle\Model\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * @author nvb <nvb@aproxima.ru>
@@ -34,7 +35,7 @@ class RouteContainerAdmin extends Admin
         $formMapper
             ->with('form.group_general')
                 ->add('parentDocument', TreeModelType::class, array('choice_list' => array(), 'select_root_node' => true, 'root_node' => $this->routeRoot))
-                ->add('name', 'text')
+                ->add('name', TextType::class)
             ->end()
         ;
     }

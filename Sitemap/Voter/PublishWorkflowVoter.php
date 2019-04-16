@@ -4,7 +4,6 @@ namespace nvbooster\StarterBundle\Sitemap\Voter;
 
 use Symfony\Cmf\Bundle\CoreBundle\PublishWorkflow\PublishWorkflowChecker;
 use Symfony\Cmf\Bundle\SeoBundle\Sitemap\VoterInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * @author nvb <nvb@aproxima.ru>

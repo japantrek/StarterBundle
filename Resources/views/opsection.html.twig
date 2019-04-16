@@ -1,9 +1,5 @@
 <div {{ sonata_block_attr(sectionContent.content)  }}>
-    {% createphp sectionContent as="rdf" noautotag %}
-        <div {{ createphp_attributes(rdf) }}>
-            <h1 {{ createphp_attributes( rdf.title ) }}>{{ createphp_content( rdf.title ) }}</h1>
-        </div>
-    {% endcreatephp %}
+    <h1>{{ sectionContent.title }}</h1>
     {% if sectionContent.content and if cmf_is_published(sectionContent.content) %}
     	{% if sectionContent.content.body is defined %}
             <div>{{ sectionContent.content.body }}</div>

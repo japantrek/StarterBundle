@@ -64,7 +64,7 @@ class RouteContainer extends RedirectRoute
     /**
      * Get all children of this route including non-routes.
      *
-     * @return Collection
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getChildren()
     {
