@@ -29,51 +29,74 @@ class SitemapPropertiesAdminExtension extends AdminExtension
     protected $visibleInSitemap;
 
     /**
+     * @var string
+     */
+    protected $formTab;
+
+    /**
+     * @param string $formTab
+     */
+    public function __construct($formTab = '')
+    {
+        $this->formTab = $formTab;
+    }
+
+    /**
+     * @var string
+     */
+    protected $translationDomain = 'nvstarter';
+
+    /**
      * {@inheritDoc}
      *
      * @see \Sonata\AdminBundle\Admin\AdminExtension::configureFormFields()
      */
     public function configureFormFields(FormMapper $form)
     {
+        if ($form->hasOpenTab()) {
+            $form->end();
+        }
         $form
-            ->with('Sitemap')
-                ->add('visibleInSitemap', CheckboxType::class, array(
-                    'label' => 'Add to sitemap',
-                    'required' => false
-                ))
-                ->add('pageWeight', ChoiceType::class, array(
+            ->tab($this->formTab, [])
+            ->with('form.group_sitemap', ['translation_domain' => $this->translationDomain])
+                ->add('visibleInSitemap', CheckboxType::class, [
                     'required' => false,
-                    'label' => 'Page priority',
-                    'choices' => array(
-                        null => 'default',
-                        '0' => '0',
-                        '0.1' => '0.1',
-                        '0.2' => '0.2',
-                        '0.3' => '0.3',
-                        '0.4' => '0.4',
-                        '0.5' => '0.5',
-                        '0.6' => '0.6',
-                        '0.7' => '0.7',
-                        '0.8' => '0.8',
-                        '0.9' => '0.9',
-                        '1.0' => '1.0'
-                    )
-                ))
-                ->add('updatePeriod', ChoiceType::class, array(
+                    'translation_domain' => $this->translationDomain,
+                ])
+                ->add('pageWeight', ChoiceType::class, [
                     'required' => false,
-                    'label' => 'Update frequency',
-                    'choices' => array(
-                        null => 'default',
-                        'always' => 'always',
-                        'hourly' => 'hourly',
-                        'daily' => 'daily',
-                        'weekly' => 'weekly',
-                        'monthly' => 'monthly',
-                        'yearly' => 'yearly',
-                        'never' => 'never'
-                    )
-                ))
+                    'translation_domain' => $this->translationDomain,
+                    'choice_translation_domain' => $this->translationDomain,
+                    'choices' => [
+                        'value.weight.default' => null,
+                        '0' => 0.0,
+                        '0.1' => 0.1,
+                        '0.2' => 0.2,
+                        '0.3' => 0.3,
+                        '0.4' => 0.4,
+                        '0.5' => 0.5,
+                        '0.6' => 0.6,
+                        '0.7' => 0.7,
+                        '0.8' => 0.8,
+                        '0.9' => 0.9,
+                        '1.0' => 1.0,
+                    ],
+                ])
+                ->add('updatePeriod', ChoiceType::class, [
+                    'required' => false,
+                    'translation_domain' => $this->translationDomain,
+                    'choice_translation_domain' => $this->translationDomain,
+                    'choices' => [
+                        'value.period.default' => null,
+                        'value.period.always' => 'always',
+                        'value.period.hourly' => 'hourly',
+                        'value.period.daily' => 'daily',
+                        'value.period.weekly' => 'weekly',
+                        'value.period.monthly' => 'monthly',
+                        'value.period.yearly' => 'yearly',
+                        'value.period.never' => 'never',
+                    ],
+                ])
             ->end();
     }
-
 }

@@ -37,6 +37,7 @@
             <tag name="cmf_seo.sitemap.voter" priority="10"/>
         </service>
         <service id="nvbooster_starter.admin_extension.sitemap_parameters" class="%nvbooster_starter.admin_extension.sitemap_parameters.class%">
+        	<argument>%cmf_sonata_phpcr_admin_integration.seo.extension.metadata.form_tab%</argument>
             <tag name="sonata.admin.extension" />
         </service>
     </services>

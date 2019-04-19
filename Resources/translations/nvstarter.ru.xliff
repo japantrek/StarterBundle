@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="">
+    <body>
+      <trans-unit id="default">
+        <source>default</source> <target>По ум олчанию</target> </trans-unit>
+        
+      <trans-unit id="dashboard.label_opcontent">
+        <source>dashboard.label_opcontent</source> <target>Многосекционная страница</target> </trans-unit>
+      <trans-unit id="dashboard.label_opsection">
+        <source>dashboard.label_opsection</source> <target>Секция</target> </trans-unit>
+      <trans-unit id="dashboard.label_unitblock">
+        <source>dashboard.label_unitblock</source> <target>Блок с картинкой</target> </trans-unit>
+      <trans-unit id="dashboard.label_routecontainer">
+        <source>dashboard.label_routecontainer</source> <target>Контейнер маршрутов</target> </trans-unit>
+      <trans-unit id="dashboard.label_menuconnector">
+        <source>dashboard.label_menuconnector</source> <target>Ссылка на меню</target> </trans-unit>
+
+      <trans-unit id="breadcrumb.link_one_page_section_list">
+        <source>breadcrumb.link_one_page_section_list</source> <target>Секции</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_one_page_section_create">
+        <source>breadcrumb.link_one_page_section_create</source> <target>Добавить</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_one_page_content_list">
+        <source>breadcrumb.link_one_page_content_list</source> <target>Многосекционные страницы</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_one_page_content_create">
+        <source>breadcrumb.link_one_page_content_create</source> <target>Добавить</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_unit_block_list">
+        <source>breadcrumb.link_unit_block_list</source> <target>Блоки с картинкой</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_unit_block_create">
+        <source>breadcrumb.link_unit_block_create</source> <target>Добавить</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_route_container_list">
+        <source>breadcrumb.link_route_container_list</source> <target>Контейнеры маршрутов</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_route_container_create">
+        <source>breadcrumb.link_route_container_create</source> <target>Добавить</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_menu_connector_list">
+        <source>breadcrumb.link_menu_connector_list</source> <target>Ссылки на меню</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_menu_connector_create">
+        <source>breadcrumb.link_menu_connector_create</source> <target>Добавить</target> </trans-unit>
+
+      <trans-unit id="filter.label_name">
+        <source>filter.label_name</source> <target>Название</target> </trans-unit>
+      <trans-unit id="filter.label_title">
+        <source>filter.label_title</source> <target>Заголовок</target> </trans-unit>
+      <trans-unit id="filter.label_node">
+        <source>filter.label_node</source> <target>Узел</target> </trans-unit>
+
+      <trans-unit id="list.label_id">
+        <source>list.label_id</source> <target>Id</target> </trans-unit>
+      <trans-unit id="list.label_title">
+        <source>list.label_title</source> <target>Заголовок</target> </trans-unit>
+      <trans-unit id="list.label_name">
+        <source>list.label_name</source> <target>Имя узла</target> </trans-unit>
+
+      <trans-unit id="form.label_title">
+        <source>form.label_title</source> <target>Заголовок</target> </trans-unit>
+      <trans-unit id="form.label_label">
+        <source>form.label_label</source> <target>Метка</target> </trans-unit>
+      <trans-unit id="form.label_body">
+        <source>form.label_body</source> <target>Текст</target> </trans-unit>
+      <trans-unit id="form.label_parentDocument">
+        <source>form.label_parentDocument</source> <target>Родительский элемент</target> </trans-unit>
+      <trans-unit id="form.label_parent_document">
+        <source>form.label_parent_document</source> <target>Родительский элемент</target> </trans-unit>
+      <trans-unit id="form.label_name">
+        <source>form.label_name</source> <target>Название узла</target> </trans-unit>
+      <trans-unit id="form.label_content">
+        <source>form.label_content</source> <target>Содержимое</target> </trans-unit>
+      <trans-unit id="form.label_key">
+        <source>form.label_content</source> <target>Ключ</target> </trans-unit>
+      <trans-unit id="form.label_value">
+        <source>form.label_content</source> <target>Значение</target> </trans-unit>
+        
+      <trans-unit id="form.label_template">
+        <source>form.label_template</source> <target>Шаблон</target> </trans-unit>
+      <trans-unit id="form.label_block">
+        <source>form.label_block</source> <target>Блок</target> </trans-unit>
+      <trans-unit id="form.label_image">
+        <source>form.label_image</source> <target>Изображение</target> </trans-unit>
+      <trans-unit id="form.label_route">
+        <source>form.label_route</source> <target>Маршрут</target> </trans-unit>
+      <trans-unit id="form.label_url">
+        <source>form.label_url</source> <target>URL</target> </trans-unit>
+      <trans-unit id="form.label_text">
+        <source>form.label_text</source> <target>Текст</target> </trans-unit>
+      <trans-unit id="form.label_settings">
+        <source>form.label_settings</source> <target>Настройки</target> </trans-unit>
+      <trans-unit id="form.label_connected_node">
+        <source>form.label_connected_node</source> <target>Пункт меню</target> </trans-unit>
+        
+      <trans-unit id="form.tab_general">
+        <source>form.tab_general</source> <target>Общая информация</target> </trans-unit>
+      <trans-unit id="form.tab_routes">
+        <source>form.tab_routes</source> <target>URL</target> </trans-unit>
+      <trans-unit id="form.tab_settings">
+        <source>form.tab_settings</source> <target>URL</target> </trans-unit>
+
+      <trans-unit id="form.group_content">
+        <source>form.group_content</source> <target>Содержимое</target> </trans-unit>
+      <trans-unit id="form.group_general">
+        <source>form.group_general</source> <target>Общая информация</target> </trans-unit>
+      <trans-unit id="form.group_sitemap">
+        <source>form.group_sitemap</source> <target state="translated">Карта сайта</target> </trans-unit>
+
+      <trans-unit id="form.label_visible_in_sitemap">
+        <source>form.label_visible_in_sitemap</source><target state="translated">Отображать в карте сайта</target></trans-unit>
+      <trans-unit id="form.label_page_weight">
+        <source>form.label_page_weight</source><target state="translated">Вес страницы (pageweight)</target></trans-unit>
+      <trans-unit id="form.label_update_period">
+        <source>form.label_update_period</source><target state="translated">Частота обновления</target></trans-unit>
+
+      <trans-unit id="value.weight.default">
+        <source>value.weight.default</source><target state="translated">По умолчанию</target></trans-unit>
+      <trans-unit id="value.period.default">
+        <source>value.period.default</source><target state="translated">По умолчанию</target></trans-unit>
+      <trans-unit id="value.period.always">
+        <source>value.period.always</source><target state="translated">Всегда</target></trans-unit>
+      <trans-unit id="value.period.hourly">
+        <source>value.period.hourly</source><target state="translated">Каждый час</target></trans-unit>
+      <trans-unit id="value.period.daily">
+        <source>value.period.daily</source><target state="translated">Ежедневно</target></trans-unit>
+      <trans-unit id="value.period.weekly">
+        <source>value.period.weekly</source><target state="translated">Раз в неделю</target></trans-unit>
+      <trans-unit id="value.period.monthly">
+        <source>value.period.monthly</source><target state="translated">Раз в месяц</target></trans-unit>
+      <trans-unit id="value.period.yearly">
+        <source>value.period.yearly</source><target state="translated">Раз в год</target></trans-unit>
+      <trans-unit id="value.period.never">
+        <source>value.period.never</source><target state="translated">Не обновлять</target></trans-unit>
+    </body>
+  </file>
+</xliff>

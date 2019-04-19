@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="ru" datatype="plaintext" original="">
+    <body>
+      <trans-unit id="dashboard.label_static_content">
+        <source>dashboard.label_static_content</source> <target>Страница</target> </trans-unit>
+
+      <trans-unit id="breadcrumb.link_seo_content_list">
+        <source>breadcrumb.link_seo_content_list</source> <target>Страницы</target> </trans-unit>
+      <trans-unit id="breadcrumb.link_seo_content_create">
+        <source>breadcrumb.link_seo_content_create</source> <target>Добавить</target> </trans-unit>
+
+    </body>
+  </file>
+</xliff>

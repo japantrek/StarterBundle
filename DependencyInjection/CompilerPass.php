@@ -45,5 +45,12 @@ class CompilerPass implements CompilerPassInterface
         if ($def = $container->getDefinition('cmf_seo.presentation')) {
             $def->replaceArgument(3, null);
         }
+
+        if (isset($bundles['SonataAdminBundle'])) {
+            $container
+                ->getDefinition('cmf_sonata_phpcr_admin_integration.content.admin')
+                ->replaceArgument(1, 'nvbooster\StarterBundle\Document\SeoContent')
+            ;
+        }
     }
 }
